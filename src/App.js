@@ -26,11 +26,13 @@ class App extends React.Component{
     const {isLoading, movies } = this.state;
      return(
       <section class="container">
-        {isLoading
-        ? <div class="loader">
+        {isLoading? (
+          <div class="loader">
             <span clss ="loader_text">Loading...</span>
           </div>
-        : movies.map(movie =>(
+        ) : (
+        <div class="movies"> 
+        {movies.map(movie =>(
             <Movie id={movie.id} // props들 가져오기
               key={movie.id}
               year={movie.year}
@@ -38,6 +40,8 @@ class App extends React.Component{
               summary={movie.summary}
               poster={movie.medium_cover_image}/>
               ))}
+          </div>
+     )}
       </section>
      );
   }
